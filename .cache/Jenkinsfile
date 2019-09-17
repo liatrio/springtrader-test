@@ -1,0 +1,18 @@
+pipeline {
+  agent {
+    label "lead-toolchain-skaffold"
+  }
+  environment {
+    SKAFFOLD_DEFAULT_REPO = 'artifactory.toolchain.lead.prod.liatr.io/docker-registry/liatrio'
+  }
+  stages {
+    stage('Build') {
+      steps {
+        container('skaffold') {
+          sh "skaffold build -f .cache/skaffold.yaml"
+        }
+      }
+    }
+  }
+}
+
