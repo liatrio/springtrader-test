@@ -14,6 +14,7 @@ spec:
       labels:
         app: springtrader
         version: {{ .Values.version }}
+        name: springtrader
     spec:
       initContainers:
       - name: wait-for-nanodbserver
