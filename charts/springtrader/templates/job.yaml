@@ -58,29 +58,3 @@ spec:
             memory: "384Mi"
             cpu: "256m"
       restartPolicy: OnFailure
----
-apiVersion: batch/v1
-kind: Job
-metadata:
-  name: test-job
-spec:
-  template:
-    metadata:
-      annotations:
-        sidecar.istio.io/inject: "false"
-    spec:
-      containers:
-      - name: test-job
-        image: node 
-        args: ['node','script.js']
-        env:
-        - name:
-          value:
-        resources:
-          requests:
-            memory: "192Mi"
-            cpu: "32m"
-          limits:
-            memory: "384Mi"
-            cpu: "256m"
-      restartPolicy: OnFailure
